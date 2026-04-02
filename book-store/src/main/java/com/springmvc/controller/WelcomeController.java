@@ -16,7 +16,7 @@ public class WelcomeController {
 		this.log.debug("welcome");
 
 		model.addAttribute("greeting", "Welcome to BookMarket");
-		model.addAttribute("strapline", "Welcome to Web Shopping!");
+		model.addAttribute("strapline", "Welcome to Web Shopping Mall!");
 
 		return "welcome";
 

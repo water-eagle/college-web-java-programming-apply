@@ -334,3 +334,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,java,dbeaver,eclipse,visualstudiocode,intellij+all,webstorm+all
+
+### 개인 추가 ###
+# 서버 설정
+Servers/

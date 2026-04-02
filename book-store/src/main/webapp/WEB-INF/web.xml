@@ -24,6 +24,18 @@ https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<!-- H2 데이터베이스에서 제공하는 웹 기반 콘솔을 활성화 -->
+	<servlet>
+		<servlet-name>H2Console</servlet-name>
+		<servlet-class>org.h2.server.web.JakartaWebServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>H2Console</servlet-name>
+		<url-pattern>/console/*</url-pattern>
+	</servlet-mapping>
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

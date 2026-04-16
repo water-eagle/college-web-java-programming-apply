@@ -35,4 +35,11 @@ public class BookServiceImpl implements BookService {
 		return booksByFilter;
 	}
 
+	@Override
+	public Book getBookById(String bookId) {
+		Book book = this.bookRepository.getBookById(bookId);
+
+		return book;
+	}
+
 }

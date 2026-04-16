@@ -1,5 +1,7 @@
 package com.springmvc.domain;
 
+import java.util.Objects;
+
 public class Book {
 	private String bookId; // 도서ID
 	private String name; // 도서명
@@ -102,6 +104,31 @@ public class Book {
 
 	public void setCondition(String condition) {
 		this.condition = condition;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(author, bookId, category, condition, description, name, publisher, releaseDate, unitPrice,
+				unitsInStock);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Book other = (Book) obj;
+		return Objects.equals(author, other.author) && Objects.equals(bookId, other.bookId)
+				&& Objects.equals(category, other.category) && Objects.equals(condition, other.condition)
+				&& Objects.equals(description, other.description) && Objects.equals(name, other.name)
+				&& Objects.equals(publisher, other.publisher) && Objects.equals(releaseDate, other.releaseDate)
+				&& unitPrice == other.unitPrice && unitsInStock == other.unitsInStock;
 	}
 
 }

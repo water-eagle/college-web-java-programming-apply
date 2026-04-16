@@ -9,12 +9,21 @@ import com.springmvc.domain.Book;
 import com.springmvc.repository.BookRepository;
 
 @Service
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
 	@Autowired
 	private BookRepository bookRepository;
 
 	@Override
 	public List<Book> getAllBookList() {
+
 		return this.bookRepository.getAllBookList();
 	}
+
+	@Override
+	public List<Book> getBookListByCategory(String category) {
+		List<Book> listOfBooks = this.bookRepository.getBookListByCategory(category);
+
+		return listOfBooks;
+	}
+
 }

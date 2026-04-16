@@ -24,9 +24,24 @@ public class BookRepositoryImpl implements BookRepository {
 
 	@Override
 	public List<Book> getAllBookList() {
-		String sql = "SELECT b_bookId, b_name, b_unitPrice, b_author, b_description, b_publisher, b_category, b_unitsInStock, b_releaseDate, b_condition FROM book";
+		String sql = "SELECT b_bookId, b_name, b_unitPrice, b_author, b_description, b_publisher"
+				+ ", b_category, b_unitsInStock, b_releaseDate, b_condition FROM book";
 
 		List<Book> listOfBooks = this.template.query(sql, new BookRowMapper());
+
+		return listOfBooks;
+	}
+
+	@Override
+	public List<Book> getBookListByCategory(String category) {
+		String sql = """
+					SELECT b_bookId, b_name, b_unitPrice, b_author, b_description, b_publisher, b_category, b_unitsInStock
+					b_releaseDate, b_condition
+				FROM book
+				WHERE b_category like concat('%', ?, '%')
+				""";
+
+		List<Book> listOfBooks = this.template.query(sql, new BookRowMapper(), category);
 
 		return listOfBooks;
 	}

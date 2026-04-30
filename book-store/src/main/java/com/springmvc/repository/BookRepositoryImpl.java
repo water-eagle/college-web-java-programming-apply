@@ -106,4 +106,14 @@ public class BookRepositoryImpl implements BookRepository {
 		return bookInfo;
 	}
 
+	@Override
+	public void setNewBook(Book book) {
+		String sql = "INSERT INTO book (b_bookId, b_name, b_unitPrice, b_author, "
+				+ " b_description, b_publisher, b_category, b_unitsInStock, "
+				+ " b_releaseDate, b_condition) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		this.template.update(sql, book.getBookId(), book.getName(), book.getUnitPrice(), book.getAuthor(),
+				book.getDescription(), book.getPublisher(), book.getCategory(), book.getUnitsInStock(),
+				book.getReleaseDate(), book.getCondition());
+	}
+
 }

@@ -42,4 +42,9 @@ public class BookServiceImpl implements BookService {
 		return book;
 	}
 
+	@Override
+	public void setNewBook(Book book) {
+		this.bookRepository.setNewBook(book);
+	}
+
 }

@@ -68,4 +68,10 @@ public class BookController {
 
 		return "book";
 	}
+
+	@GetMapping("/add")
+	public String requestAddBookForm(Book book) {
+		return "addBook";
+
+	}
 }

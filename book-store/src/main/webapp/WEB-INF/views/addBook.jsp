@@ -24,7 +24,14 @@
 		</div>
 	</div>
 	<div class="container">
-	<%--
+		<div class="float-right">
+			<form:form action="${pageContext.request.contextPath}/logout"
+				method="POST">
+				<input type="submit" class="btn btn-sm btn-success" value="logout" />
+			</form:form>
+		</div>
+		<br /><br />
+		<%--
 	<form:form modelAttribute="book" class="form-horizontal" >
 	--%>
 		<form:form modelAttribute="NewBook" class="form-horizontal">

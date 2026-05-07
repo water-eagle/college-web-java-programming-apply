@@ -11,7 +11,10 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		<intercept-url pattern="/books/add"
 			access="hasAuthority('ROLE_ADMIN')" />
 		<intercept-url pattern="/**" access="permitAll" />
-		<form-login />
+		<form-login login-page="/Login"
+			default-target-url="/books/add"
+			authentication-failure-url="/Loginfailed"
+			username-parameter="username" password-parameter="password" />
 		<csrf />
 		<logout />
 	</http>

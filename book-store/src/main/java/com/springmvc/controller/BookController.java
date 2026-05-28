@@ -28,6 +28,7 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
+
 	@GetMapping
 	public String requestBookList(Model model) {
 		List<Book> list = bookService.getAllBookList();

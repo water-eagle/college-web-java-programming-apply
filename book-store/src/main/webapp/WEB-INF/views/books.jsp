@@ -24,27 +24,27 @@
 		</div>
 	</div>
 	<div class="container">
-	<div class="row" align="center">
-		<c:forEach items="${bookList}" var="book">
-			<div class="col-md-4">
-				<h3>${book.name}</h3>
-				<p>${book.author}
-					<br> ${book.publisher} | ${book.releaseDate}
-				<p align=left>${fn:substring(book.description, 0, 100)}...
-				<p>${book.unitPrice}원
-				<p>
-					<a href="<c:url value="/books/book?id=${book.bookId}"/>"
-						class="btn btn-Secondary"
-						role="button">상세정보 &raquo;
-					</a>
-				</p>
-			</div>
-		</c:forEach>
-	</div>
-	<hr>
-	<footer>
-		<p>&copy; BookMarket</p>
-	</footer>
+		<div class="row" align="center">
+			<c:forEach items="${bookList}" var="book">
+				<div class="col-md-4">
+					<img src="<c:url value="/bookimage/${book.fileName}"/>"
+						style="width: 60%" />
+					<h3>${book.name}</h3>
+					<p>${book.author}
+						<br> ${book.publisher} | ${book.releaseDate}
+					<p align=left>${fn:substring(book.description, 0, 100)}...
+					<p>${book.unitPrice}원
+					<p>
+						<a href="<c:url value="/books/book?id=${book.bookId}"/>"
+							class="btn btn-Secondary" role="button">상세정보 &raquo; </a>
+					</p>
+				</div>
+			</c:forEach>
+		</div>
+		<hr>
+		<footer>
+			<p>&copy; BookMarket</p>
+		</footer>
 	</div>
 </body>
 </html>

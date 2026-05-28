@@ -28,7 +28,9 @@ public class BookRepositoryImpl implements BookRepository {
 	@Override
 	public List<Book> getAllBookList() {
 		String sql = "SELECT b_bookId, b_name, b_unitPrice, b_author, b_description, b_publisher"
-				+ ", b_category, b_unitsInStock, b_releaseDate, b_condition FROM book";
+				+ ", b_category, b_unitsInStock, b_releaseDate, b_condition"
+				+ ", b_fileName"
+				+ " FROM book";
 
 		List<Book> listOfBooks = this.template.query(sql, new BookRowMapper());
 
@@ -39,7 +41,8 @@ public class BookRepositoryImpl implements BookRepository {
 	public List<Book> getBookListByCategory(String category) {
 		String sql = """
 					SELECT b_bookId, b_name, b_unitPrice, b_author, b_description, b_publisher,
-					       b_category, b_unitsInStock, b_releaseDate, b_condition
+					       b_category, b_unitsInStock, b_releaseDate, b_condition,
+					       b_fileName
 					FROM book
 					WHERE b_category LIKE CONCAT('%', ?, '%')
 				""";
@@ -61,7 +64,8 @@ public class BookRepositoryImpl implements BookRepository {
 				String publisherName = filter.get("publisher").get(j);
 				String sql = """
 							SELECT b_bookId, b_name, b_unitPrice, b_author, b_description,
-							       b_publisher, b_category, b_unitsInStock, b_releaseDate, b_condition
+							       b_publisher, b_category, b_unitsInStock, b_releaseDate, b_condition,
+							       b_fileName
 							FROM book
 							WHERE b_publisher LIKE '%' || ? || '%'
 						""";
@@ -74,7 +78,8 @@ public class BookRepositoryImpl implements BookRepository {
 				String category = filter.get("category").get(i);
 				String sql = """
 							SELECT b_bookId, b_name, b_unitPrice, b_author, b_description,
-							       b_publisher, b_category, b_unitsInStock, b_releaseDate, b_condition
+							       b_publisher, b_category, b_unitsInStock, b_releaseDate, b_condition,
+							       b_fileName
 							FROM book
 							WHERE b_category LIKE '%' || ? || '%'
 						""";
@@ -97,7 +102,7 @@ public class BookRepositoryImpl implements BookRepository {
 		int rowCount = this.template.queryForObject(sql, Integer.class, bookId);
 		if (rowCount != 0) {
 			sql = "SELECT b_bookId, b_name, b_unitPrice, b_author, b_description, b_publisher"
-					+ ", b_category, b_unitsInStock, b_releaseDate, b_condition FROM book WHERE b_bookId=?";
+					+ ", b_category, b_unitsInStock, b_releaseDate, b_condition, b_fileName FROM book WHERE b_bookId=?";
 			bookInfo = this.template.queryForObject(sql, new BookRowMapper(), bookId);
 		}
 		if (bookInfo == null) {

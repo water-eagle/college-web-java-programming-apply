@@ -2,6 +2,8 @@ package com.springmvc.domain;
 
 import java.util.Objects;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Book {
 	private String bookId; // 도서ID
 	private String name; // 도서명
@@ -13,6 +15,8 @@ public class Book {
 	private long unitsInStock; // 재고수
 	private String releaseDate; // 출판일(월/년)
 	private String condition; // 신규 도서 or 중고 도서 or 전자책
+	private MultipartFile bookImage; // 도서 이미지
+	private String fileName;
 
 	public Book() {
 		super();
@@ -106,10 +110,26 @@ public class Book {
 		this.condition = condition;
 	}
 
+	public MultipartFile getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(MultipartFile bookImage) {
+		this.bookImage = bookImage;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(author, bookId, category, condition, description, name, publisher, releaseDate, unitPrice,
-				unitsInStock);
+		return Objects.hash(author, bookId, category, condition, description, fileName, name, publisher, releaseDate,
+				unitPrice, unitsInStock);
 	}
 
 	@Override
@@ -126,9 +146,10 @@ public class Book {
 		Book other = (Book) obj;
 		return Objects.equals(author, other.author) && Objects.equals(bookId, other.bookId)
 				&& Objects.equals(category, other.category) && Objects.equals(condition, other.condition)
-				&& Objects.equals(description, other.description) && Objects.equals(name, other.name)
-				&& Objects.equals(publisher, other.publisher) && Objects.equals(releaseDate, other.releaseDate)
-				&& unitPrice == other.unitPrice && unitsInStock == other.unitsInStock;
+				&& Objects.equals(description, other.description) && Objects.equals(fileName, other.fileName)
+				&& Objects.equals(name, other.name) && Objects.equals(publisher, other.publisher)
+				&& Objects.equals(releaseDate, other.releaseDate) && unitPrice == other.unitPrice
+				&& unitsInStock == other.unitsInStock;
 	}
 
 }

@@ -65,7 +65,7 @@ local.properties
 
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
-#.project
+.project
 
 ### Eclipse Patch ###
 # Spring Boot Tooling
@@ -341,3 +341,12 @@ Servers/
 
 # DB 프로퍼티 파일
 db.properties
+
+# 스프링 애플리케이션의 처리에 관련된 설정파일
+application.properties
+
+# JDT-specific (Eclipse Java Development Tools)      
+.classpath
+
+# Example 파일
+*.example

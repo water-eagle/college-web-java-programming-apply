@@ -12,7 +12,8 @@
 	http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
 	<context:property-placeholder
-		location="classpath:db.properties" />
+		location="classpath:db.properties"
+		file-encoding="UTF-8" />
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

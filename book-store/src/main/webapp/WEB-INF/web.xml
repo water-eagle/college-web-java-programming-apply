@@ -22,6 +22,12 @@ https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
 			<param-value>/WEB-INF/spring/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+			<location></location><!-- 비워두면 시스템 기본 임시 디렉토리 사용, 실제 저장은 application.properties의 uploadPath로 Controller에서 처리 -->
+			<max-file-size>20971520</max-file-size><!-- 업로드 되는 파일들의 최대 크기 20MB -->
+			<max-request-size>41943040</max-request-size><!-- multipart/form-data 요청의 최대 크기 40M -->
+			<file-size-threshold>20971520</file-size-threshold><!-- 업로드된 파일이 디스크에 기록되는 크기 임계 값 20MB -->
+		</multipart-config>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>

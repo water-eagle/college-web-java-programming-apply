@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.Book;
+import com.springmvc.exception.BookIdException;
 
 @Repository
 public class BookRepositoryImpl implements BookRepository {
@@ -28,9 +29,7 @@ public class BookRepositoryImpl implements BookRepository {
 	@Override
 	public List<Book> getAllBookList() {
 		String sql = "SELECT b_bookId, b_name, b_unitPrice, b_author, b_description, b_publisher"
-				+ ", b_category, b_unitsInStock, b_releaseDate, b_condition"
-				+ ", b_fileName"
-				+ " FROM book";
+				+ ", b_category, b_unitsInStock, b_releaseDate, b_condition" + ", b_fileName" + " FROM book";
 
 		List<Book> listOfBooks = this.template.query(sql, new BookRowMapper());
 
@@ -106,7 +105,7 @@ public class BookRepositoryImpl implements BookRepository {
 			bookInfo = this.template.queryForObject(sql, new BookRowMapper(), bookId);
 		}
 		if (bookInfo == null) {
-			throw new IllegalArgumentException("도서 ID가 " + bookId + "인 도서를 찾을 수 없습니다.");
+			throw new BookIdException(bookId);
 		}
 		return bookInfo;
 	}

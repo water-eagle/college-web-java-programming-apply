@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.MatrixVariable;
@@ -22,8 +23,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.domain.Book;
+import com.springmvc.exception.BookIdException;
 import com.springmvc.exception.CategoryException;
 import com.springmvc.service.BookService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/books")
@@ -116,5 +120,15 @@ public class BookController {
 	public void initBinder(WebDataBinder binder) {
 		binder.setAllowedFields("bookId", "name", "unitPrice", "author", "description", "publisher", "category",
 				"unitsInStock", "releaseDate", "condition", "bookImage");
+	}
+
+	@ExceptionHandler(value = { BookIdException.class })
+	public ModelAndView handlerException(HttpServletRequest req, BookIdException exception) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("invaildBookId", exception.getBookId());
+		mav.addObject("exception", exception);
+		mav.addObject("url", req.getRequestURL() + "?" + req.getQueryString());
+		mav.setViewName("errorBook");
+		return mav;
 	}
 }

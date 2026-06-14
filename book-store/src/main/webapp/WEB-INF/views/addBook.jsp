@@ -35,8 +35,10 @@
 				<input type="submit" class="btn btn-sm btn-success" value="Logout" />
 			</form:form>
 		</div>
-		<br />
-		<br />
+		<br /> <br />
+		<div class="float-right" style="padding-right: 30px">
+			<a href="?language=ko">Korean</a> | <a href="?language=en">English</a>
+		</div>
 		<form:form modelAttribute="NewBook" class="form-horizontal"
 			action="./add" enctype="multipart/form-
 data">
@@ -45,40 +47,40 @@ data">
 					<spring:message code="addBook.form.subtitle.label" />
 				</legend>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 도서 ID --> <spring:message code="addBook.form.bookId.label" />
+					<label class="col-sm-2 control-label"> <!-- 도서 ID --> <spring:message
+							code="addBook.form.bookId.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:input path="bookId" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 도서명--> <spring:message code="addBook.form.name.label" />
+					<label class="col-sm-2 control-label"> <!-- 도서명--> <spring:message
+							code="addBook.form.name.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:input path="name" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 가격--> <spring:message code="addBook.form.unitPrice.label" />
+					<label class="col-sm-2 control-label"> <!-- 가격--> <spring:message
+							code="addBook.form.unitPrice.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:input path="unitPrice" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 저자--> <spring:message code="addBook.form.author.label" />
+					<label class="col-sm-2 control-label"> <!-- 저자--> <spring:message
+							code="addBook.form.author.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:input path="author" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 상세정보--> <spring:message code="addBook.form.description.label" />
+					<label class="col-sm-2 control-label"> <!-- 상세정보--> <spring:message
+							code="addBook.form.description.label" />
 					</label>
 					<div class="col-sm-5">
 						<form:textarea path="description" cols="50" rows="2"
@@ -86,40 +88,40 @@ data">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 출판사--> <spring:message code="addBook.form.publisher.label" />
+					<label class="col-sm-2 control-label"> <!-- 출판사--> <spring:message
+							code="addBook.form.publisher.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:input path="publisher" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 분야--> <spring:message code="addBook.form.category.label" />
+					<label class="col-sm-2 control-label"> <!-- 분야--> <spring:message
+							code="addBook.form.category.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:input path="category" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 재고수--> <spring:message code="addBook.form.unitsInStock.label" />
+					<label class="col-sm-2 control-label"> <!-- 재고수--> <spring:message
+							code="addBook.form.unitsInStock.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:input path="unitsInStock" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 출판일--> <spring:message code="addBook.form.releaseDate.label" />
+					<label class="col-sm-2 control-label"> <!-- 출판일--> <spring:message
+							code="addBook.form.releaseDate.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:input path="releaseDate" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 상태--> <spring:message code="addBook.form.condition.label" />
+					<label class="col-sm-2 control-label"> <!-- 상태--> <spring:message
+							code="addBook.form.condition.label" />
 					</label>
 					<div class="col-sm-3">
 						<form:radiobutton path="condition" value="New" />
@@ -131,8 +133,8 @@ data">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 control-label">
-						<!-- 도서이미지--> <spring:message code="addBook.form.bookImage.label" />
+					<label class="col-sm-2 control-label"> <!-- 도서이미지--> <spring:message
+							code="addBook.form.bookImage.label" />
 					</label>
 					<div class="col-sm-7">
 						<form:input path="bookImage" type="file" class="form-control" />
